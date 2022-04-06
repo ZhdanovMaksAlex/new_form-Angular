@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/2076d06ac7.js" crossorigin="anonymous"></script>
+
+  <div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1 class="font">Напишите нам</h1>
+
+<!-- 1) -->
+  <div class="form-control">
+    <label><i class="fas fa-user"></i> Ваше имя: </label>
+    <input type="text" placeholder="" formControlName="name">
+    <!-- ПРОВЕРКА!!! -->
+    <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+     class="validation">
+     <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+     class="validation">
+
+     <small *ngIf="form.get('name')?.errors?.['maxLength']">
+     Данное поле превышает максимальное значение
+     </small>
+
+     <small *ngIf="form.get('email')?.errors?.['required']">
+     Данное поле не может быть пустым
+     </small>
+
+    </div>
+  </div>
+
+<!-- 2) -->
+  <div class="form-control">
+    <label> <i class="fas fa-envelope"></i> Ваш Email: </label>
+    <input type="text" placeholder="" formControlName="email">
+   <!-- ПРОВЕРКА!!! -->
+
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+    class="validation">
+    <small *ngIf="form.get('email')?.errors?.['required']">
+    Поле Email не может быть пустым
+    </small>
+
+    <small *ngIf="form.get('email')?.errors?.['email']">
+    Ведите корректный Email
+    </small>
+  </div>
+  </div>
+
+<!-- 3) -->
+  <div class="form-control">
+    <label> <i class="fas fa-mobile"></i> Ваш телефон: </label>
+    <input type="text" value="+7(___)___--"
+    pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+    placeholder="+7(___)___--"
+    formControlName="number">
+    <!-- Проверка!!! -->
+    <div *ngIf="form.get('number')?.invalid && form.get('number')?.touched"
+      class="validation">
+      <small *ngIf="form.get('number')?.errors?.['required']">
+    Данное поле не может быть пустым
+      </small>
+      <small *ngIf="form.get('number')?.errors?.['pattern']">
+     Данное поле не соответствует номеру телефона
+      </small>
+    </div>
+  </div>
+
+<div class="form-control" formGroupName="obj">
+<label >Тема:</label>
+ <select class="tehemes" formArrayName="choice">
+  <option value=""></option>
+    <option value="t">Техподдержка</option>
+    <option value="p">Продажи</option>
+    <option value="d">Другое</option>
+    <option value="e">Еще один пункт</option>
+  </select>
+</div>
+
+
+
+<div class="form-control">
+  <label>Ваше сообщение:</label>
+  <input class="inpt" type="text" formControlName="message">
+  <div *ngIf="form.get('message')?.invalid && form.get('message')?.touched"
+  class="validation">
+  <label *ngIf="form.get('message')?.errors?.['required']">
+    Данное поле не может быть пустым
+ </label>
+  </div> 
+</div>
+
+<div class="capth">
+<div [hidden]="captcha">
+  <re-captcha (resolved)="resolved($event)" siteKey="6LcLyhIfAAAAAHTXP_mFN_QnHVrqJDCbD87zmqNS"></re-captcha>
+</div>
+<div [hidden]="!captcha"> 
+</div>
+</div>
+
+
+
+<div class="btns">
+<button class="btn" type="submit" [disabled]="form.invalid">Отправить письмо!</button>
+</div>
+</div>
+</form>
+</div>
+<div>
+
+  
+  

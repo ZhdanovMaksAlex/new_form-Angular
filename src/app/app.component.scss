@@ -1,0 +1,74 @@
+
+
+input {
+    &.ng-invalid.ng-touched {
+        border: 3px solid red;
+    }
+    &.ng-valid.ng-touched {
+        border: 3px solid rgb(77, 224, 77);
+    }
+
+}
+
+
+input {
+  display: block;
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+  
+}
+
+.container {
+  background-color: rgb(240, 240, 240);
+  width: 524px;
+  
+}
+
+div.container {
+  border: 2px solid #b8b8b1;
+ border-radius: 15px;
+ 
+}
+ .font {
+   background-color:rgb(117, 0, 0)
+ }
+
+.btn {
+  position:left;
+left:100px;
+padding: 5px;
+margin-bottom: 1rem;
+
+}
+ 
+h1 {
+  color:rgb(240, 240, 240)
+}
+ 
+.btns {
+  padding-top: 10px;
+}
+
+.inpt {
+  height: 40px;
+}
+
+.str {
+display: block;
+}
+
+h2 {
+height: 5px;
+}
+.input-num {
+width: 200px;
+}
+
+.tehemes {
+padding: 5px;
+margin: 10px;
+}
+.capth{
+padding: 10px;
+}
